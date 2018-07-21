@@ -1,0 +1,98 @@
+{
+  "article": {
+    "attributes": {
+      "title": {
+        "appearance": ""
+      },
+      "coucou": {
+        "appearance": ""
+      },
+      "content": {
+        "appearance": "WYSIWYG"
+      },
+      "code": {
+        "appearance": ""
+      }
+    }
+  },
+  "tag": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "category": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "reference": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "course": {
+    "attributes": {
+      "title": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": "WYSIWYG"
+      }
+    }
+  },
+  "section": {
+    "attributes": {
+      "title": {
+        "appearance": ""
+      },
+      "position": {
+        "appearance": ""
+      }
+    }
+  },
+  "lesson": {
+    "attributes": {
+      "title": {
+        "appearance": ""
+      },
+      "url": {
+        "appearance": ""
+      },
+      "position": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": "WYSIWYG"
+      },
+      "isProject": {
+        "appearance": ""
+      }
+    }
+  },
+  "submission": {
+    "attributes": {
+      "status": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": "WYSIWYG"
+      },
+      "url": {
+        "appearance": ""
+      }
+    }
+  },
+  "comment": {
+    "attributes": {
+      "content": {
+        "appearance": "WYSIWYG"
+      }
+    }
+  }
+}

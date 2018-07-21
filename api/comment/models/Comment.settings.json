@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "comment",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "submission": {
+      "model": "submission",
+      "via": "comments"
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "user": {
+      "model": "user",
+      "via": "comments",
+      "plugin": "users-permissions"
+    }
+  }
+}

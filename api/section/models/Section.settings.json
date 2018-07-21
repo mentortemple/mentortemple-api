@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "section",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "position": {
+      "type": "integer"
+    },
+    "course": {
+      "model": "course",
+      "via": "sections"
+    },
+    "lessons": {
+      "collection": "lesson",
+      "via": "section"
+    }
+  }
+}

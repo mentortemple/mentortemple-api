@@ -1,0 +1,36 @@
+{
+  "connection": "default",
+  "collectionName": "enrollment",
+  "info": {
+    "name": "enrollment",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "user": {
+      "model": "user",
+      "via": "enrollments",
+      "plugin": "users-permissions"
+    },
+    "course": {
+      "model": "course",
+      "via": "enrollments"
+    },
+    "completedLessons": {
+      "collection": "completedlesson",
+      "via": "enrollment"
+    },
+    "mentor": {
+      "columnName": "mentor",
+      "model": "user",
+      "via": "enrollment",
+      "plugin": "users-permissions"
+    },
+    "submissions": {
+      "collection": "submission",
+      "via": "enrollment"
+    }
+  }
+}

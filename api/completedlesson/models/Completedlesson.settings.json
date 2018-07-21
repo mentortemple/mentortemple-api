@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "completedlesson",
+  "info": {
+    "name": "completedlesson",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "user": {
+      "model": "user",
+      "via": "completedLessons",
+      "plugin": "users-permissions"
+    },
+    "lesson": {
+      "model": "lesson",
+      "via": "completedLessons"
+    },
+    "enrollment": {
+      "model": "enrollment",
+      "via": "completedLessons"
+    }
+  }
+}

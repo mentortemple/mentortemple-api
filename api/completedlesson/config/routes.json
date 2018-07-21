@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/completedlesson",
+      "handler": "Completedlesson.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/completedlesson/count",
+      "handler": "Completedlesson.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/completedlesson/:_id",
+      "handler": "Completedlesson.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/completedlesson",
+      "handler": "Completedlesson.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/completedlesson/:_id",
+      "handler": "Completedlesson.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/completedlesson/:_id",
+      "handler": "Completedlesson.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

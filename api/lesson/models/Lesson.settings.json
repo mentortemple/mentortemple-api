@@ -1,0 +1,51 @@
+{
+  "connection": "default",
+  "collectionName": "lesson",
+  "info": {
+    "name": "lesson",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "position": {
+      "unique": true,
+      "type": "integer",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "isProject": {
+      "type": "boolean",
+      "required": true
+    },
+    "section": {
+      "model": "section",
+      "via": "lessons"
+    },
+    "course": {
+      "model": "course",
+      "via": "lessons"
+    },
+    "completedLessons": {
+      "collection": "completedlesson",
+      "via": "lesson"
+    },
+    "submissions": {
+      "collection": "submission",
+      "via": "lesson"
+    }
+  }
+}

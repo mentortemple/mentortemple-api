@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "course",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "sections": {
+      "collection": "section",
+      "via": "course"
+    },
+    "lessons": {
+      "collection": "lesson",
+      "via": "course"
+    },
+    "enrollments": {
+      "collection": "enrollment",
+      "via": "course"
+    }
+  }
+}

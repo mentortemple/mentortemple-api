@@ -1,0 +1,40 @@
+{
+  "connection": "default",
+  "collectionName": "submission",
+  "info": {
+    "name": "submission",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "enrollment": {
+      "model": "enrollment",
+      "via": "submissions"
+    },
+    "lesson": {
+      "model": "lesson",
+      "via": "submissions"
+    },
+    "status": {
+      "default": "pending",
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "accepted"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "comments": {
+      "collection": "comment",
+      "via": "submission"
+    }
+  }
+}
