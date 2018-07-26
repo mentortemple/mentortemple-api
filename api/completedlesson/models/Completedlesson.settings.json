@@ -18,9 +18,9 @@
       "model": "lesson",
       "via": "completedLessons"
     },
-    "enrollment": {
-      "model": "enrollment",
-      "via": "completedLessons"
+    "course": {
+      "model": "course",
+      "via": "completedlesson"
     }
   }
 }

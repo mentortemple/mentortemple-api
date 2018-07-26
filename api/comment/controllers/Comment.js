@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Comment.js controller
@@ -7,14 +7,13 @@
  */
 
 module.exports = {
-
   /**
    * Retrieve comment records.
    *
    * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async ctx => {
     if (ctx.query._q) {
       return strapi.services.comment.search(ctx.query);
     } else {
@@ -28,7 +27,7 @@ module.exports = {
    * @return {Object}
    */
 
-  findOne: async (ctx) => {
+  findOne: async ctx => {
     if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
       return ctx.notFound();
     }
@@ -42,7 +41,7 @@ module.exports = {
    * @return {Number}
    */
 
-  count: async (ctx) => {
+  count: async ctx => {
     return strapi.services.comment.count(ctx.query);
   },
 
@@ -52,8 +51,47 @@ module.exports = {
    * @return {Object}
    */
 
-  create: async (ctx) => {
-    return strapi.services.comment.add(ctx.request.body);
+  create: async ctx => {
+    const { _id: user } = ctx.state.user;
+    const {
+      submission: submissionId,
+      comment,
+      approved = false
+    } = ctx.request.body;
+
+    if (!submissionId.match(/^[0-9a-fA-F]{24}$/)) {
+      return ctx.notFound();
+    }
+    const submission = await strapi.services.submission.fetch({ _id: submissionId });
+
+    if (approved) {
+      // TODO: SEND EMAIL TO USER INFORMING HIM THAT FEEDBACK HAS BEEN GIVEN AND SUBMISSION APPROVED.
+      await strapi.services.completedlesson.add({
+        lesson: submission.lesson.id,
+        user: submission.user.id,
+        course: submission.course.id
+      });
+      //TODO: REMOVE THE STATUS FROM SUBMISSION. IT'S NOT NEEDED. ALL SHOULD DEPEND ON IF THE LESSON IS COMPLETED OR NOT.
+
+      await strapi.services.submission.edit(
+        { _id: submissionId },
+        { status: 'accepted' }
+      );
+    }
+
+    // TODO: SEND EMAIL TO USER INFORMING HIM THAT FEEDBACK HAS BEEN GIVEN ON SUBMISSION.
+
+    //TODO: make sure only mentor of enrollment or user of enrollment can post comments for this submission.
+
+    let newComment = await strapi.services.comment.add({
+      submission: submissionId,
+      user,
+      comment
+    }); 
+
+    newComment.submission = await strapi.services.submission.fetch({ _id: submissionId });
+
+    return newComment;
   },
 
   /**
@@ -63,7 +101,7 @@ module.exports = {
    */
 
   update: async (ctx, next) => {
-    return strapi.services.comment.edit(ctx.params, ctx.request.body) ;
+    return strapi.services.comment.edit(ctx.params, ctx.request.body);
   },
 
   /**

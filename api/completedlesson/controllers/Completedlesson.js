@@ -53,7 +53,24 @@ module.exports = {
    */
 
   create: async (ctx) => {
-    return strapi.services.completedlesson.add(ctx.request.body);
+    const { _id: user } = ctx.state.user;
+    const { lesson, course } = ctx.request.body;
+
+    if (!lesson || !lesson.match(/^[0-9a-fA-F]{24}$/)) {
+      return ctx.notFound();
+    }
+
+    if (!course || !course.match(/^[0-9a-fA-F]{24}$/)) {
+      return ctx.notFound();
+    }
+
+    const completedlesson = await strapi.services.completedlesson.fetch({ user, lesson, course });
+
+    if (completedlesson) {
+      return strapi.services.completedlesson.remove({ _id: completedlesson.id });
+    }
+
+    return strapi.services.completedlesson.add({ lesson, user, course });
   },
 
   /**

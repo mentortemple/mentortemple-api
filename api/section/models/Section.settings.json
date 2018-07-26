@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "section",
   "info": {
     "name": "section",
     "description": ""
@@ -22,6 +22,9 @@
     "lessons": {
       "collection": "lesson",
       "via": "section"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

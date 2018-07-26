@@ -47,14 +47,22 @@
       "collection": "enrollment",
       "via": "user"
     },
-    "enrollment": {
-      "model": "enrollment",
-      "via": "mentor",
-      "columnName": "mentorship_enrollment"
-    },
     "comments": {
       "collection": "comment",
       "via": "user"
+    },
+    "submissions": {
+      "collection": "submission",
+      "via": "user"
+    },
+    "mentorshipApplications": {
+      "collection": "mentorshipapplication",
+      "via": "user"
+    },
+    "enrollment": {
+      "collection": "enrollment",
+      "via": "mentor",
+      "columnName": "mentorship_enrollment"
     }
   }
 }

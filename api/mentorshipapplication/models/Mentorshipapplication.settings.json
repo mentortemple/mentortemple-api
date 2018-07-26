@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "enrollment",
+  "collectionName": "mentorshipapplication",
   "info": {
-    "name": "enrollment",
+    "name": "mentorshipapplication",
     "description": ""
   },
   "options": {
@@ -11,22 +11,15 @@
   "attributes": {
     "user": {
       "model": "user",
-      "via": "enrollments",
+      "via": "mentorshipApplications",
       "plugin": "users-permissions"
     },
     "course": {
       "model": "course",
-      "via": "enrollments"
+      "via": "mentorshipApplications"
     },
-    "mentor": {
-      "columnName": "mentor",
-      "model": "user",
-      "via": "enrollment",
-      "plugin": "users-permissions"
-    },
-    "submissions": {
-      "collection": "submission",
-      "via": "enrollment"
+    "approved": {
+      "type": "boolean"
     },
     "name": {
       "type": "string",

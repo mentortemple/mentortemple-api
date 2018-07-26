@@ -19,6 +19,9 @@
     "attributes": {
       "name": {
         "appearance": ""
+      },
+      "color": {
+        "appearance": ""
       }
     }
   },
@@ -43,6 +46,9 @@
       },
       "description": {
         "appearance": "WYSIWYG"
+      },
+      "slug": {
+        "appearance": ""
       }
     }
   },
@@ -52,6 +58,9 @@
         "appearance": ""
       },
       "position": {
+        "appearance": ""
+      },
+      "description": {
         "appearance": ""
       }
     }
@@ -71,6 +80,9 @@
         "appearance": "WYSIWYG"
       },
       "isProject": {
+        "appearance": ""
+      },
+      "slug": {
         "appearance": ""
       }
     }
@@ -92,6 +104,30 @@
     "attributes": {
       "content": {
         "appearance": "WYSIWYG"
+      },
+      "comment": {
+        "appearance": "WYSIWYG"
+      }
+    }
+  },
+  "mentorshipApplication": {
+    "attributes": {
+      "approved": {
+        "appearance": ""
+      }
+    }
+  },
+  "enrollment": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "mentorshipapplication": {
+    "attributes": {
+      "name": {
+        "appearance": ""
       }
     }
   }

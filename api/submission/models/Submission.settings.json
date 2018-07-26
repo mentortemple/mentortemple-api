@@ -9,12 +9,33 @@
     "timestamps": true
   },
   "attributes": {
-    "enrollment": {
-      "model": "enrollment",
-      "via": "submissions"
-    },
     "lesson": {
       "model": "lesson",
+      "via": "submissions"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "comments": {
+      "collection": "comment",
+      "via": "submission"
+    },
+    "user": {
+      "model": "user",
+      "via": "submissions",
+      "plugin": "users-permissions"
+    },
+    "course": {
+      "model": "course",
+      "via": "submissions"
+    },
+    "enrollment": {
+      "model": "enrollment",
       "via": "submissions"
     },
     "status": {
@@ -24,17 +45,6 @@
         "pending",
         "accepted"
       ]
-    },
-    "description": {
-      "type": "text"
-    },
-    "url": {
-      "type": "string",
-      "required": true
-    },
-    "comments": {
-      "collection": "comment",
-      "via": "submission"
     }
   }
 }

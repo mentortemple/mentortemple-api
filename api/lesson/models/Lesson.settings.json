@@ -46,6 +46,11 @@
     "submissions": {
       "collection": "submission",
       "via": "lesson"
+    },
+    "slug": {
+      "unique": true,
+      "type": "string",
+      "required": true
     }
   }
 }

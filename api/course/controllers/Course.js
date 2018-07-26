@@ -15,11 +15,17 @@ module.exports = {
    */
 
   find: async (ctx) => {
+    let courses;
     if (ctx.query._q) {
-      return strapi.services.course.search(ctx.query);
+      courses = await strapi.services.course.search(ctx.query);
     } else {
-      return strapi.services.course.fetchAll(ctx.query);
+      courses = await strapi.services.course.fetchAll(ctx.query);
     }
+
+    return {
+      courses,
+      count: await strapi.services.course.count(ctx.query)
+    };
   },
 
   /**
@@ -29,10 +35,6 @@ module.exports = {
    */
 
   findOne: async (ctx) => {
-    if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
-      return ctx.notFound();
-    }
-
     return strapi.services.course.fetch(ctx.params);
   },
 
@@ -74,5 +76,88 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.course.remove(ctx.params);
+  },
+
+  /**
+   * Get all courses mentored by authenticated user.
+   */
+  getMentoredCourses: async (ctx) => {
+    const { _id: mentor } = ctx.state.user;
+
+    let enrollments = await strapi.services.enrollment.fetchAll({ mentor });
+
+    enrollments = await Promise.all(
+      enrollments.map(
+        async enrollment => {
+          enrollment.submissions = await Promise.all(
+            enrollment.submissions.map(
+              async submission => {
+                submission.lesson = await strapi.services.lesson.fetch({ _id: submission.lesson });
+                
+                return submission;
+              }
+            )
+          );
+
+          return enrollment;
+        })
+    );
+
+    return enrollments;
+  },
+
+  /**
+   * Get all courses user is enrolled into and all courses user is mentoring.
+   */
+  getEnrolledAndMentoredCourses: async (ctx) => {
+    const { _id: user } = ctx.state.user;
+
+    const { _id: mentor } = ctx.state.user;
+
+    let mentorshipEnrollments = await strapi.services.enrollment.fetchAll({ mentor });
+
+    mentorshipEnrollments = await Promise.all(
+      mentorshipEnrollments.map(
+        async enrollment => {
+          enrollment.submissions = await Promise.all(
+            enrollment.submissions.map(
+              async submission => {
+                submission.lesson = await strapi.services.lesson.fetch({ _id: submission.lesson });
+                
+                return submission;
+              }
+            )
+          );
+
+          return enrollment;
+        })
+    );
+
+    let enrollments = await strapi.services.enrollment.fetchAll({ user });
+
+    enrollments = await Promise.all(
+      enrollments.map(
+        async enrollment => {
+          enrollment.course = await strapi.services.course.fetch({ _id: enrollment.course.id });
+
+          enrollment.submissions = await Promise.all(
+            enrollment.submissions.map(
+              async submission => {
+                submission.lesson = await strapi.services.lesson.fetch({ _id: submission.lesson });
+                
+                return submission;
+              }
+            )
+          );
+
+          return enrollment;
+        }
+      )
+    );
+
+    return {
+      enrollments,
+      mentorshipEnrollments
+    };
   }
 };

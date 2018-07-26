@@ -18,7 +18,23 @@
     },
     {
       "method": "GET",
-      "path": "/course/:_id",
+      "path": "/course/enrolled-and-mentored-courses",
+      "handler": "Course.getEnrolledAndMentoredCourses",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/course/enrolledcourses",
+      "handler": "Course.getEnrolledCourses",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/course/:slug",
       "handler": "Course.findOne",
       "config": {
         "policies": []

@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "course",
   "info": {
     "name": "course",
     "description": ""
@@ -10,10 +10,12 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "sections": {
       "collection": "section",
@@ -25,6 +27,27 @@
     },
     "enrollments": {
       "collection": "enrollment",
+      "via": "course"
+    },
+    "slug": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "completedlesson": {
+      "collection": "completedlesson",
+      "via": "course"
+    },
+    "submissions": {
+      "collection": "submission",
+      "via": "course"
+    },
+    "mentorshipApplications": {
+      "collection": "mentorshipapplication",
+      "via": "course"
+    },
+    "tags": {
+      "collection": "tag",
       "via": "course"
     }
   }

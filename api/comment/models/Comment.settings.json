@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "comment",
   "info": {
     "name": "comment",
     "description": ""
@@ -13,7 +13,7 @@
       "model": "submission",
       "via": "comments"
     },
-    "content": {
+    "comment": {
       "type": "text",
       "required": true
     },

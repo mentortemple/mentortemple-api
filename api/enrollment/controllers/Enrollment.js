@@ -6,6 +6,16 @@
  * @description: A set of functions called "actions" for managing `Enrollment`.
  */
 
+function slugify(text)
+{
+  return text.toString().toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
+}
+
 module.exports = {
 
   /**
@@ -53,7 +63,19 @@ module.exports = {
    */
 
   create: async (ctx) => {
-    return strapi.services.enrollment.add(ctx.request.body);
+    const { user } = ctx.state;
+    const { course: courseId } = ctx.request.body;
+
+    
+    const course = await strapi.services.course.fetch({ _id: courseId });
+    const enrollment = await strapi.services.enrollment.fetch({ user: user._id, course: courseId });
+    
+    console.log(course);
+    if (enrollment) {
+      return enrollment;
+    }
+
+    return strapi.services.enrollment.add({ course: courseId, user: user._id, name: slugify(`${user.username}-${course.title}`) });
   },
 
   /**
@@ -74,5 +96,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.enrollment.remove(ctx.params);
-  }
+  },
 };

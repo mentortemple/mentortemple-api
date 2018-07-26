@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/mentorshipapplication",
+      "handler": "Mentorshipapplication.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/mentorshipapplication/count",
+      "handler": "Mentorshipapplication.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/mentorshipapplication/:_id",
+      "handler": "Mentorshipapplication.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/mentorshipapplication",
+      "handler": "Mentorshipapplication.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/mentorshipapplication/:_id",
+      "handler": "Mentorshipapplication.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/mentorshipapplication/:_id",
+      "handler": "Mentorshipapplication.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
