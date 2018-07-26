@@ -27,6 +27,11 @@
   }
 }
 
+.welcomeMessage {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
 .blockLinkDocumentation {
   &:before {
     content: '\f02d';

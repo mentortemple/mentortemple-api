@@ -12,12 +12,11 @@ import styles from './styles.scss';
 import messages from './messages.json';
 defineMessages(messages);
 
-function LeftMenuFooter({ version }) { // eslint-disable-line react/prefer-stateless-function
+function LeftMenuFooter() { // eslint-disable-line react/prefer-stateless-function
   return (
     <div className={styles.leftMenuFooter}>
       <div>
-        <FormattedMessage {...messages.poweredBy} />
-        <a href="https://strapi.io" target="_blank">v{version}</a>
+
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ function LeftMenuHeader() {
   return (
     <div className={styles.leftMenuHeader}>
       <Link to="/" className={styles.leftMenuHeaderLink}>
-        <span className={styles.projectName}></span>
+        <span className={styles.projectName}>MENTOR TEMPLE</span>
       </Link>
     </div>
   );

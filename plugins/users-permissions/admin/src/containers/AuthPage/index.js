@@ -176,7 +176,7 @@ export class AuthPage extends React.Component { // eslint-disable-line react/pre
             {this.props.match.params.authType === 'register' ? (
               <FormattedMessage id="users-permissions.Auth.form.header.register" />
             ) : (
-              <img src={LogoStrapi} alt="logo" />
+              <h2>MENTOR TEMPLE</h2>
             )}
           </div>
           <div className={styles.headerDescription}>
@@ -215,7 +215,9 @@ export class AuthPage extends React.Component { // eslint-disable-line react/pre
             {this.renderLink()}
           </div>
         </div>
-        {authType === 'register' && <div className={styles.logoContainer}><img src={LogoStrapi} alt="logo" /></div>}
+        {authType === 'register' && <div className={styles.logoContainer}>
+          <h2>MENTOR TEMPLE</h2>
+        </div>}
       </div>
     );
   }
