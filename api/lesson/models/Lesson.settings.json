@@ -24,12 +24,10 @@
       "required": true
     },
     "description": {
-      "type": "text",
-      "required": true
+      "type": "text"
     },
     "isProject": {
-      "type": "boolean",
-      "required": true
+      "type": "boolean"
     },
     "section": {
       "model": "section",

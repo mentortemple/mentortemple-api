@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config();
 /**
  * Use `server.js` to run your application without `$ strapi start`.
  * To start the server, run: `$ npm start`.
