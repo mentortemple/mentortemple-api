@@ -20,5 +20,13 @@ module.exports = {
       label: 'Enrollments',
       destination: 'enrollment'
     },
+    {
+      label: 'Tags',
+      destination: 'enrollment'
+    },
+    {
+      label: 'Mentorship Applications',
+      destination: 'mentorshipapplication'
+    },
   ],
 };

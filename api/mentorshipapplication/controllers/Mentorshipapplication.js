@@ -6,6 +6,17 @@
  * @description: A set of functions called "actions" for managing `Mentorshipapplication`.
  */
 
+
+function slugify(text)
+{
+  return text.toString().toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
+}
+
 module.exports = {
   /**
    * Retrieve mentorshipapplication records.
@@ -52,15 +63,17 @@ module.exports = {
    */
 
   create: async ctx => {
-    const { _id: user } = ctx.state.user;
-    const { course } = ctx.request.body;
+    const { user } = ctx.state;
+    const { course: courseId } = ctx.request.body;
 
-    if (!course || !course.match(/^[0-9a-fA-F]{24}$/)) {
+    if (!courseId || !courseId.match(/^[0-9a-fA-F]{24}$/)) {
       return ctx.notFound();
     }
 
+    const course = await strapi.services.course.fetch({ _id: courseId });
+
     const mentorshipapplication = await strapi.services.mentorshipapplication.fetch(
-      { user, course }
+      { user: user._id, course: courseId }
     );
 
     if (mentorshipapplication) {
@@ -68,9 +81,10 @@ module.exports = {
     }
 
     return strapi.services.mentorshipapplication.add({
-      user,
-      course,
-      approved: false
+      user: user._id,
+      course: courseId,
+      approved: false,
+      name: slugify(`${user.username}-${course.title}`)
     });
   },
 

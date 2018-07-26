@@ -1,9 +1,10 @@
-@servers(['apis' => ['root@174.138.15.49']])
+@servers(['apis' => ['root@207.154.225.174']])
 
 @php
   $repo = "git@mentortemple-api.github.com:mentortemple/mentortemple-api.git";
   $releaseDir = '/opt/mentortemple-api/releases';
   $appDir = '/opt/mentortemple-api';
+  $envVariables = file_get_contents('.env.prod');
   $release = 'release_' . date('Y-m-d-H-i');
 @endphp
 
@@ -11,6 +12,7 @@
   fetch_repo
   run_npm_install
   update_permissions
+  setup_env
   restart_pm2
 @endmacro
 
@@ -29,6 +31,12 @@
 
 @task('update_permissions')
   sudo chmod -R 777 {{ $releaseDir }}/{{ $release }}/public;
+@endtask
+
+@task('setup_env')
+  cd {{ $releaseDir }}/{{ $release }};
+  touch .env
+  echo "{{ $envVariables }}" >> .env
 @endtask
 
 @task('restart_pm2')
