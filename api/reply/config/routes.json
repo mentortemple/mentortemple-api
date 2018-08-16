@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/reply",
+      "handler": "Reply.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reply/count",
+      "handler": "Reply.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reply/:_id",
+      "handler": "Reply.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/reply",
+      "handler": "Reply.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/reply/:_id",
+      "handler": "Reply.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/reply/:_id",
+      "handler": "Reply.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

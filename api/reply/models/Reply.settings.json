@@ -1,0 +1,34 @@
+{
+  "connection": "default",
+  "collectionName": "reply",
+  "info": {
+    "name": "reply",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "user": {
+      "model": "user",
+      "via": "discussion_replies",
+      "plugin": "users-permissions"
+    },
+    "parent": {
+      "model": "reply",
+      "via": "replies"
+    },
+    "replies": {
+      "collection": "reply",
+      "via": "parent"
+    },
+    "discussion": {
+      "model": "discussion",
+      "via": "discussion_replies"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "discussion",
+  "info": {
+    "name": "discussion",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "user": {
+      "model": "user",
+      "via": "discussions",
+      "plugin": "users-permissions"
+    },
+    "slug": {
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "discussion_replies": {
+      "collection": "reply",
+      "via": "discussion"
+    }
+  }
+}

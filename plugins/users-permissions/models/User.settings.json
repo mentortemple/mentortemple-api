@@ -63,6 +63,14 @@
       "collection": "enrollment",
       "via": "mentor",
       "columnName": "mentorship_enrollment"
+    },
+    "discussions": {
+      "collection": "discussion",
+      "via": "user"
+    },
+    "discussion_replies": {
+      "collection": "reply",
+      "via": "user"
     }
   }
 }

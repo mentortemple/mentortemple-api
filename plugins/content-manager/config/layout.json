@@ -130,5 +130,25 @@
         "appearance": ""
       }
     }
+  },
+  "discussion": {
+    "attributes": {
+      "content": {
+        "appearance": "WYSIWYG"
+      },
+      "title": {
+        "appearance": ""
+      },
+      "slug": {
+        "appearance": ""
+      }
+    }
+  },
+  "reply": {
+    "attributes": {
+      "content": {
+        "appearance": "WYSIWYG"
+      }
+    }
   }
 }
